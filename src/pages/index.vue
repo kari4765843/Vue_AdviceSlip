@@ -1,18 +1,24 @@
+<script setup>
+  import { ref } from 'vue'
+  import { useAdvice } from '../composables/useAdvice'
+
+  const { advices, search } = useAdvice()
+
+  const searchItem = ref('')
+</script>
+
 <template>
   <div>
-    <input type="text" placeholder="Search and Advice" class="mt-16 w-full rounded-full py-4 text-center text-lg" />
-    <div class="grid grid-cols-3 gap-14 pt-8">
+    <input
+      v-model="searchItem"
+      type="text"
+      placeholder="Search for an advice"
+      class="mt-16 w-full rounded-full py-4 text-center text-lg text-green-800"
+      @change="search(searchItem)"
+    />
+    <div v-for="(advice, index) in advices" :key="index" class="grid grid-cols-3 gap-14 pt-8">
       <p>
-        a piece of writing that partakes of the nature of both speech and song that is nearly always rhythmical, usually
-        metaphorical, and often exhibits such formal elements as meter, rhyme, and stanzaic structure.
-      </p>
-      <p>
-        a piece of writing that partakes of the nature of both speech and song that is nearly always rhythmical, usually
-        metaphorical, and often exhibits such formal elements as meter, rhyme, and stanzaic structure.
-      </p>
-      <p>
-        a piece of writing that partakes of the nature of both speech and song that is nearly always rhythmical, usually
-        metaphorical, and often exhibits such formal elements as meter, rhyme, and stanzaic structure.
+        {{ advice.advice }}
       </p>
     </div>
   </div>
