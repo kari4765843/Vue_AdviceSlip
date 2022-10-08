@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Index from './pages/index.vue'
-import Notfound from './pages/404.vue'
+import Notfound from './pages/Page not found.vue'
 
 const routes = [
   { path: '/', name: 'Index', component: Index },
